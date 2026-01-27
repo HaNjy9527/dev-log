@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>日誌 on Miguel dev note</title>
+    <link>http://localhost:1313/categories/%E6%97%A5%E8%AA%8C/</link>
+    <description>Recent content in 日誌 on Miguel dev note</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 27 Jan 2026 10:06:59 +0800</lastBuildDate>
+    <atom:link href="http://localhost:1313/categories/%E6%97%A5%E8%AA%8C/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>CI/CD 經歷整理（GitLab &#43; Windows &#43; IIS）</title>
+      <link>http://localhost:1313/posts/cicd-%E6%95%B4%E7%90%86/</link>
+      <pubDate>Tue, 27 Jan 2026 10:06:59 +0800</pubDate>
+      <guid>http://localhost:1313/posts/cicd-%E6%95%B4%E7%90%86/</guid>
+      <description>&lt;h2 id=&#34;1-目標與環境設定階段&#34;&gt;1. 目標與環境設定階段&lt;/h2&gt;&#xA;&lt;p&gt;&lt;strong&gt;目標&lt;/strong&gt;：在公司自架 GitLab 上為 .NET 專案建立 CI/CD，部署到 IIS。&lt;/p&gt;&#xA;&lt;p&gt;&lt;strong&gt;環境與策略&lt;/strong&gt;&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Windows Server + IIS&lt;/li&gt;&#xA;&lt;li&gt;GitLab Runner 使用 Shell Executor（非 Docker）&lt;/li&gt;&#xA;&lt;li&gt;先做 Pilot Run，確認穩定再推廣&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;&lt;strong&gt;關鍵認知補強&lt;/strong&gt;&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;GitLab Server 只負責管理流程，實際執行需要 GitLab Runner&lt;/li&gt;&#xA;&lt;li&gt;公司自架 GitLab + 自架 Runner 本身免費（僅機器成本）&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;hr&gt;</description>
+    </item>
+    <item>
+      <title>Hello World GitHub Pages &#43; Hugo 建置開發日誌</title>
+      <link>http://localhost:1313/posts/hello-world/</link>
+      <pubDate>Tue, 27 Jan 2026 10:06:59 +0800</pubDate>
+      <guid>http://localhost:1313/posts/hello-world/</guid>
+      <description>&lt;h2 id=&#34;這是我的第一篇網誌&#34;&gt;這是我的第一篇網誌&lt;/h2&gt;&#xA;&lt;p&gt;這是一份完整的開發日誌摘要，你可以將其儲存為 &lt;code&gt;README.md&lt;/code&gt; 或 &lt;code&gt;DEV_LOG.md&lt;/code&gt; 放進你的專案中，方便未來查閱。&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h1 id=&#34;github-pages--hugo-建置開發日誌&#34;&gt;GitHub Pages + Hugo 建置開發日誌&lt;/h1&gt;&#xA;&lt;h2 id=&#34;1-專案概述&#34;&gt;1. 專案概述&lt;/h2&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;strong&gt;目標&lt;/strong&gt;：建立個人技術網誌 (&lt;code&gt;dev-log&lt;/code&gt;)。&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;架構&lt;/strong&gt;：GitHub Pages (Hosting) + Hugo (Static Site Generator)。&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;主題&lt;/strong&gt;：Ananke。&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;自動化&lt;/strong&gt;：GitHub Actions。&lt;/li&gt;&#xA;&lt;/ul&gt;</description>
+    </item>
+  </channel>
+</rss>

@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    
+    <title>Miguel dev note</title>
+    <meta name="viewport" content="width=device-width,minimum-scale=1">
+    <meta name="description" content="Miguel 的工程筆記與生活日常">
+    <meta name="generator" content="Hugo 0.154.5">
+    
+    
+    
+      <meta name="robots" content="noindex, nofollow">
+    
+    
+
+    
+<link rel="stylesheet" href="/ananke/css/main.min.css" >
+
+
+
+  
+
+
+    
+
+
+    
+      
+
+    
+
+    
+    
+      <link href="/tags/gitlab/index.xml" rel="alternate" type="application/rss+xml" title="Miguel dev note" />
+      <link href="/tags/gitlab/index.xml" rel="feed" type="application/rss+xml" title="Miguel dev note" />
+      
+    
+
+    
+      <link rel="canonical" href="http://localhost:1313/tags/gitlab/">
+    
+
+    
+    
+    <meta property="og:url" content="http://localhost:1313/tags/gitlab/">
+  <meta property="og:site_name" content="Miguel dev note">
+  <meta property="og:title" content="GitLab">
+  <meta property="og:description" content="Miguel 的工程筆記與生活日常">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="website">
+
+  <meta itemprop="name" content="GitLab">
+  <meta itemprop="description" content="Miguel 的工程筆記與生活日常">
+  <meta itemprop="datePublished" content="2026-01-27T10:10:00+08:00">
+  <meta itemprop="dateModified" content="2026-01-27T10:10:00+08:00">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="GitLab">
+  <meta name="twitter:description" content="Miguel 的工程筆記與生活日常">
+
+	
+  </head><body class="ma0 avenir bg-washed-yellow development is-term">
+    
+
+  <header>
+    <div class="pb3-m pb6-l bg-washed-yellow">
+      <nav class="pv3 ph3 ph4-ns" role="navigation">
+  <div class="flex-l center items-center justify-between">
+    <a href="/" class="f3 fw2 hover-white white-90 dib no-underline">
+      
+        Miguel dev note
+      
+    </a>
+    <div class="flex-l items-center">
+      
+
+      
+      <div class="ananke-socials"></div>
+
+    </div>
+  </div>
+</nav>
+
+      <div class="tc-l pv3 ph3 ph4-ns">
+        <h1 class="f2 f-subheadline-l fw2 light-silver mb0 lh-title">
+          GitLab
+        </h1>
+        
+      </div>
+    </div>
+  </header>
+
+
+    <main class="pb7" role="main">
+      
+  <article class="pa3 pa4-ns nested-copy-line-height">
+    <section class="cf ph3 ph5-l pv3 pv4-l f4 tc-l center measure-wide lh-copy nested-links dark-gray"></section>
+    <section class="flex-ns mt5 flex-wrap justify-around">
+      
+        <div class="w-100 w-30-l mb4 relative bg-white">
+          <div class="w-100 mb4 nested-copy-line-height relative bg-white">
+  <div class="mb3 pa4 gray overflow-hidden bg-white">
+    <span class="f6 db">Posts</span>
+    <h1 class="f3 near-black">
+      <a href="/posts/gitlab_cicd_%E7%94%9F%E7%94%A2%E7%92%B0%E5%A2%83%E9%83%A8%E7%BD%B2%E5%95%8F%E9%A1%8C%E5%BD%99%E6%95%B4/" class="link black dim">
+        GitLab CI/CD 生產環境部署問題彙整
+      </a>
+    </h1>
+    <div class="nested-links f5 lh-copy nested-copy-line-height">
+      <p>這篇文章整理了 GitLab CI/CD 在生產環境部署時常見的問題與對策，包含 Runner、權限、IIS 與 .NET Hosting Bundle 等實務細節。</p>
+<h1 id="gitlab-cicd-生產環境部署問題彙整報告">GitLab CI/CD 生產環境部署問題彙整報告</h1>
+<h2 id="一環境基礎建設問題找不到-git">一、環境基礎建設問題：找不到 Git</h2>
+<h3 id="狀況描述">狀況描述</h3>
+<p>在生產伺服器執行 <code>get_sources</code> 階段時報錯 <code>The term 'git' is not recognized</code>。</p>
+<h3 id="原因分析">原因分析</h3>
+<ol>
+<li>生產伺服器尚未安裝 Git 客戶端</li>
+<li>安裝後未將 Git 路徑加入系統環境變數（Path），或 Runner 未重啟導致讀取不到新變數</li>
+</ol>
+    </div>
+    <a href="/posts/gitlab_cicd_%E7%94%9F%E7%94%A2%E7%92%B0%E5%A2%83%E9%83%A8%E7%BD%B2%E5%95%8F%E9%A1%8C%E5%BD%99%E6%95%B4/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
+  </div>
+</div>
+
+        </div>
+      
+        <div class="w-100 w-30-l mb4 relative bg-white">
+          <div class="w-100 mb4 nested-copy-line-height relative bg-white">
+  <div class="mb3 pa4 gray overflow-hidden bg-white">
+    <span class="f6 db">Posts</span>
+    <h1 class="f3 near-black">
+      <a href="/posts/cicd-%E6%95%B4%E7%90%86/" class="link black dim">
+        CI/CD 經歷整理（GitLab &#43; Windows &#43; IIS）
+      </a>
+    </h1>
+    <div class="nested-links f5 lh-copy nested-copy-line-height">
+      <h2 id="1-目標與環境設定階段">1. 目標與環境設定階段</h2>
+<p><strong>目標</strong>：在公司自架 GitLab 上為 .NET 專案建立 CI/CD，部署到 IIS。</p>
+<p><strong>環境與策略</strong></p>
+<ul>
+<li>Windows Server + IIS</li>
+<li>GitLab Runner 使用 Shell Executor（非 Docker）</li>
+<li>先做 Pilot Run，確認穩定再推廣</li>
+</ul>
+<p><strong>關鍵認知補強</strong></p>
+<ul>
+<li>GitLab Server 只負責管理流程，實際執行需要 GitLab Runner</li>
+<li>公司自架 GitLab + 自架 Runner 本身免費（僅機器成本）</li>
+</ul>
+<hr>
+    </div>
+    <a href="/posts/cicd-%E6%95%B4%E7%90%86/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
+  </div>
+</div>
+
+        </div>
+      
+    </section>
+    </article>
+
+    </main>
+    <footer class="bg-washed-yellow bottom-0 w-100 pa3" role="contentinfo">
+  <div class="flex justify-between">
+  <a class="f4 fw4 hover-white white-70 dn dib-ns pv2 ph3 no-underline" href="http://localhost:1313/" >
+    &copy;  Miguel dev note 2026 
+  </a>
+    <div><div class="ananke-socials"></div>
+</div>
+  </div>
+</footer>
+
+  </body>
+</html>

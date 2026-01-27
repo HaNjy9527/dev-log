@@ -4,9 +4,9 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     
-    <title>My New Hugo Site</title>
+    <title>Miguel dev note</title>
     <meta name="viewport" content="width=device-width,minimum-scale=1">
-    <meta name="description" content="">
+    <meta name="description" content="Miguel 的工程筆記與生活日常">
     <meta name="generator" content="Hugo 0.154.5">
     
     
@@ -20,6 +20,8 @@
 
 
 
+  
+
 
     
 
@@ -31,8 +33,8 @@
 
     
     
-      <link href="/posts/index.xml" rel="alternate" type="application/rss+xml" title="My New Hugo Site" />
-      <link href="/posts/index.xml" rel="feed" type="application/rss+xml" title="My New Hugo Site" />
+      <link href="/posts/index.xml" rel="alternate" type="application/rss+xml" title="Miguel dev note" />
+      <link href="/posts/index.xml" rel="feed" type="application/rss+xml" title="Miguel dev note" />
       
     
 
@@ -43,28 +45,31 @@
     
     
     <meta property="og:url" content="http://localhost:1313/posts/">
-  <meta property="og:site_name" content="My New Hugo Site">
+  <meta property="og:site_name" content="Miguel dev note">
   <meta property="og:title" content="Posts">
+  <meta property="og:description" content="Miguel 的工程筆記與生活日常">
   <meta property="og:locale" content="en_us">
   <meta property="og:type" content="website">
 
   <meta itemprop="name" content="Posts">
+  <meta itemprop="description" content="Miguel 的工程筆記與生活日常">
   <meta itemprop="datePublished" content="2026-01-27T10:10:00+08:00">
   <meta itemprop="dateModified" content="2026-01-27T10:10:00+08:00">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="Posts">
+  <meta name="twitter:description" content="Miguel 的工程筆記與生活日常">
 
 	
-  </head><body class="ma0 avenir bg-near-white development is-section is-section">
+  </head><body class="ma0 avenir bg-washed-yellow development is-section is-section">
     
 
   <header>
-    <div class="pb3-m pb6-l bg-black">
+    <div class="pb3-m pb6-l bg-washed-yellow">
       <nav class="pv3 ph3 ph4-ns" role="navigation">
   <div class="flex-l center items-center justify-between">
     <a href="/" class="f3 fw2 hover-white white-90 dib no-underline">
       
-        My New Hugo Site
+        Miguel dev note
       
     </a>
     <div class="flex-l items-center">
@@ -90,7 +95,7 @@
     <main class="pb7" role="main">
       
   <article class="pa3 pa4-ns nested-copy-line-height">
-    <section class="cf ph3 ph5-l pv3 pv4-l f4 tc-l center measure-wide lh-copy nested-links mid-gray"></section>
+    <section class="cf ph3 ph5-l pv3 pv4-l f4 tc-l center measure-wide lh-copy nested-links dark-gray"></section>
     <section class="flex-ns mt5 flex-wrap justify-around">
       
         <div class="w-100 w-30-l mb4 relative bg-white">
@@ -113,31 +118,6 @@
 <li>生產伺服器尚未安裝 Git 客戶端</li>
 <li>安裝後未將 Git 路徑加入系統環境變數（Path），或 Runner 未重啟導致讀取不到新變數</li>
 </ol>
-<h3 id="解決方式">解決方式</h3>
-<ul>
-<li>在伺服器安裝 Git</li>
-<li>將 <code>C:\Program Files\Git\bin</code> 加入系統 Path</li>
-<li><strong>關鍵動作</strong>：執行 <code>Restart-Service gitlab-runner</code> 重新載入環境變數</li>
-</ul>
-<hr>
-<h2 id="二檔案部署邏輯問題copy-item-失敗">二、檔案部署邏輯問題：Copy-Item 失敗</h2>
-<h3 id="狀況描述-1">狀況描述</h3>
-<p>出現錯誤 <code>Container cannot be copied onto existing leaf item</code>。</p>
-<h3 id="原因分析-1">原因分析</h3>
-<ol>
-<li><code>Copy-Item</code> 在 PowerShell 處理「資料夾對資料夾」的覆蓋時邏輯較脆弱，若目標路徑已存在同名檔案或結構不符會報錯</li>
-<li>檔案被 IIS 程序佔用導致無法覆蓋</li>
-</ol>
-<h3 id="解決方式-1">解決方式</h3>
-<ul>
-<li>改用 <code>robocopy</code>：Windows 內建更強大的同步工具</li>
-<li>參數優化：使用 <code>/E</code> (子目錄)、<code>/MT:32</code> (多執行緒)、<code>/R:2 /W:5</code> (失敗重試機制)</li>
-<li>能有效解決暫時性的檔案鎖定問題</li>
-</ul>
-<hr>
-<h2 id="三iis-自動化控制問題應用程式集區狀態報錯">三、IIS 自動化控制問題：應用程式集區狀態報錯</h2>
-<h3 id="狀況描述-2">狀況描述</h3>
-<p>執行 <code>Stop-WebAppPool</code> 時出現 <code>目標路徑上的物件已經停止</code>，導致 Pipeline 中斷（ERROR: Job failed）。</p>
     </div>
     <a href="/posts/gitlab_cicd_%E7%94%9F%E7%94%A2%E7%92%B0%E5%A2%83%E9%83%A8%E7%BD%B2%E5%95%8F%E9%A1%8C%E5%BD%99%E6%95%B4/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
   </div>
@@ -169,36 +149,6 @@
 <li>公司自架 GitLab + 自架 Runner 本身免費（僅機器成本）</li>
 </ul>
 <hr>
-<h2 id="2-runner-安裝與註冊階段">2. Runner 安裝與註冊階段</h2>
-<p><strong>問題：</strong> 無法執行 <code>gitlab-runner.exe</code></p>
-<ul>
-<li><strong>原因</strong>：檔名與位置不一致（原檔名為 <code>gitlab-runner-windows-amd64.exe</code>）</li>
-<li><strong>處理</strong>：建立 <code>C:\GitLab-Runner</code>，重新命名並整理檔案</li>
-</ul>
-<p><strong>問題：</strong> Runner 註冊參數不確定</p>
-<ul>
-<li><strong>處理</strong>：
-<ul>
-<li>Tags：<code>windows, shell</code></li>
-<li>Executor：<code>shell</code></li>
-<li>Maintenance note：略過</li>
-</ul>
-</li>
-</ul>
-<p><strong>結果：</strong> Runner 成功安裝為 Windows 服務並啟動</p>
-<hr>
-<h2 id="3-ci-編譯與相依問題處理階段">3. CI 編譯與相依問題處理階段</h2>
-<p><strong>問題：</strong> 找不到 PowerShell Core（<code>pwsh</code>）</p>
-<ul>
-<li><strong>原因</strong>：Runner 預設用 <code>pwsh</code>，但伺服器只有 Windows PowerShell</li>
-<li><strong>處理</strong>：安裝 PowerShell 7+，重啟 Runner 服務</li>
-</ul>
-<p><strong>問題：</strong> <code>gitlab-runner</code> 指令找不到</p>
-<ul>
-<li><strong>原因</strong>：未加入 PATH</li>
-<li><strong>處理</strong>：改以 Windows 服務方式管理或用完整路徑執行</li>
-</ul>
-<p><strong>問題：</strong> .gitlab-ci.yml 語法錯誤</p>
     </div>
     <a href="/posts/cicd-%E6%95%B4%E7%90%86/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
   </div>
@@ -227,26 +177,6 @@
 <li><strong>主題</strong>：Ananke。</li>
 <li><strong>自動化</strong>：GitHub Actions。</li>
 </ul>
-<hr>
-<h2 id="2-遭遇問題與解決方案-troubleshooting-log">2. 遭遇問題與解決方案 (Troubleshooting Log)</h2>
-<h3 id="-git-上傳錯誤">🔴 Git 上傳錯誤</h3>
-<p><strong>問題描述：</strong>
-執行 <code>git push -u origin main</code> 時出現以下錯誤：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>error: src refspec main does not match any
-</span></span><span style="display:flex;"><span>error: failed to push some refs to &#39;https://github.com/HaNjy9527/dev-log.git&#39;
-</span></span></code></pre></div><p><strong>原因分析：</strong></p>
-<ol>
-<li>本地端尚未進行第一次 <code>commit</code>，導致分支 (Branch) 尚未建立。</li>
-<li>本地預設分支名稱為 <code>master</code>，但 GitHub 預期為 <code>main</code>。</li>
-</ol>
-<p><strong>解決指令：</strong></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>git add .
-</span></span><span style="display:flex;"><span>git commit -m <span style="color:#e6db74">&#34;Initial commit&#34;</span>  <span style="color:#75715e"># 建立實體版本</span>
-</span></span><span style="display:flex;"><span>git branch -M main              <span style="color:#75715e"># 強制更名為 main</span>
-</span></span><span style="display:flex;"><span>git push -u origin main         <span style="color:#75715e"># 推送</span>
-</span></span></code></pre></div><h3 id="-github-actions-版本不相容">🔴 GitHub Actions 版本不相容</h3>
-<p><strong>問題描述：</strong>
-GitHub Actions 執行失敗，錯誤訊息：</p>
     </div>
     <a href="/posts/hello-world/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
   </div>
@@ -258,10 +188,10 @@ GitHub Actions 執行失敗，錯誤訊息：</p>
     </article>
 
     </main>
-    <footer class="bg-black bottom-0 w-100 pa3" role="contentinfo">
+    <footer class="bg-washed-yellow bottom-0 w-100 pa3" role="contentinfo">
   <div class="flex justify-between">
   <a class="f4 fw4 hover-white white-70 dn dib-ns pv2 ph3 no-underline" href="http://localhost:1313/" >
-    &copy;  My New Hugo Site 2026 
+    &copy;  Miguel dev note 2026 
   </a>
     <div><div class="ananke-socials"></div>
 </div>

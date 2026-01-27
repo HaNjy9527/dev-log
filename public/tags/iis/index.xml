@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>IIS on Miguel dev note</title>
+    <link>http://localhost:1313/tags/iis/</link>
+    <description>Recent content in IIS on Miguel dev note</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 27 Jan 2026 10:10:00 +0800</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/iis/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>GitLab CI/CD 生產環境部署問題彙整</title>
+      <link>http://localhost:1313/posts/gitlab_cicd_%E7%94%9F%E7%94%A2%E7%92%B0%E5%A2%83%E9%83%A8%E7%BD%B2%E5%95%8F%E9%A1%8C%E5%BD%99%E6%95%B4/</link>
+      <pubDate>Tue, 27 Jan 2026 10:10:00 +0800</pubDate>
+      <guid>http://localhost:1313/posts/gitlab_cicd_%E7%94%9F%E7%94%A2%E7%92%B0%E5%A2%83%E9%83%A8%E7%BD%B2%E5%95%8F%E9%A1%8C%E5%BD%99%E6%95%B4/</guid>
+      <description>&lt;p&gt;這篇文章整理了 GitLab CI/CD 在生產環境部署時常見的問題與對策，包含 Runner、權限、IIS 與 .NET Hosting Bundle 等實務細節。&lt;/p&gt;&#xA;&lt;h1 id=&#34;gitlab-cicd-生產環境部署問題彙整報告&#34;&gt;GitLab CI/CD 生產環境部署問題彙整報告&lt;/h1&gt;&#xA;&lt;h2 id=&#34;一環境基礎建設問題找不到-git&#34;&gt;一、環境基礎建設問題：找不到 Git&lt;/h2&gt;&#xA;&lt;h3 id=&#34;狀況描述&#34;&gt;狀況描述&lt;/h3&gt;&#xA;&lt;p&gt;在生產伺服器執行 &lt;code&gt;get_sources&lt;/code&gt; 階段時報錯 &lt;code&gt;The term &#39;git&#39; is not recognized&lt;/code&gt;。&lt;/p&gt;&#xA;&lt;h3 id=&#34;原因分析&#34;&gt;原因分析&lt;/h3&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;生產伺服器尚未安裝 Git 客戶端&lt;/li&gt;&#xA;&lt;li&gt;安裝後未將 Git 路徑加入系統環境變數（Path），或 Runner 未重啟導致讀取不到新變數&lt;/li&gt;&#xA;&lt;/ol&gt;</description>
+    </item>
+    <item>
+      <title>CI/CD 經歷整理（GitLab &#43; Windows &#43; IIS）</title>
+      <link>http://localhost:1313/posts/cicd-%E6%95%B4%E7%90%86/</link>
+      <pubDate>Tue, 27 Jan 2026 10:06:59 +0800</pubDate>
+      <guid>http://localhost:1313/posts/cicd-%E6%95%B4%E7%90%86/</guid>
+      <description>&lt;h2 id=&#34;1-目標與環境設定階段&#34;&gt;1. 目標與環境設定階段&lt;/h2&gt;&#xA;&lt;p&gt;&lt;strong&gt;目標&lt;/strong&gt;：在公司自架 GitLab 上為 .NET 專案建立 CI/CD，部署到 IIS。&lt;/p&gt;&#xA;&lt;p&gt;&lt;strong&gt;環境與策略&lt;/strong&gt;&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Windows Server + IIS&lt;/li&gt;&#xA;&lt;li&gt;GitLab Runner 使用 Shell Executor（非 Docker）&lt;/li&gt;&#xA;&lt;li&gt;先做 Pilot Run，確認穩定再推廣&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;&lt;strong&gt;關鍵認知補強&lt;/strong&gt;&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;GitLab Server 只負責管理流程，實際執行需要 GitLab Runner&lt;/li&gt;&#xA;&lt;li&gt;公司自架 GitLab + 自架 Runner 本身免費（僅機器成本）&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;hr&gt;</description>
+    </item>
+  </channel>
+</rss>

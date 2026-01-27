@@ -2,6 +2,8 @@
 date = '2026-01-27T10:06:59+08:00'
 draft = false
 title = 'CI/CD 經歷整理（GitLab + Windows + IIS）'
+categories = ["日誌", "CI/CD"]
+tags = ["GitLab", "Runner", "Windows", "IIS", ".NET"]
 +++
 
 ## 1. 目標與環境設定階段

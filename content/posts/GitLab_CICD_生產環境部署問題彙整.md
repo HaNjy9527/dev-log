@@ -3,6 +3,8 @@
 date = '2026-01-27T10:10:00+08:00'
 draft = false
 title = 'GitLab CI/CD 生產環境部署問題彙整'
+categories = ["CI/CD", "部署"]
+tags = ["GitLab", "Runner", "IIS", "PowerShell", ".NET"]
 +++
 
 這篇文章整理了 GitLab CI/CD 在生產環境部署時常見的問題與對策，包含 Runner、權限、IIS 與 .NET Hosting Bundle 等實務細節。

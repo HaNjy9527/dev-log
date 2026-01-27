@@ -2,6 +2,8 @@
 date = '2026-01-27T10:06:59+08:00'
 draft = false
 title = 'Hello World GitHub Pages + Hugo 建置開發日誌'
+categories = ["日誌", "Hugo"]
+tags = ["Hugo", "GitHub Pages", "GitHub Actions", "Ananke"]
 +++
 ## 這是我的第一篇網誌
 這是一份完整的開發日誌摘要，你可以將其儲存為 `README.md` 或 `DEV_LOG.md` 放進你的專案中，方便未來查閱。

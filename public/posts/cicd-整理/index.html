@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    
+    <title>CI/CD 經歷整理（GitLab &#43; Windows &#43; IIS） | My New Hugo Site</title>
+    <meta name="viewport" content="width=device-width,minimum-scale=1">
+    <meta name="description" content="1. 目標與環境設定階段
+目標：在公司自架 GitLab 上為 .NET 專案建立 CI/CD，部署到 IIS。
+環境與策略
+
+Windows Server &#43; IIS
+GitLab Runner 使用 Shell Executor（非 Docker）
+先做 Pilot Run，確認穩定再推廣
+
+關鍵認知補強
+
+GitLab Server 只負責管理流程，實際執行需要 GitLab Runner
+公司自架 GitLab &#43; 自架 Runner 本身免費（僅機器成本）
+
+
+2. Runner 安裝與註冊階段
+問題： 無法執行 gitlab-runner.exe
+
+原因：檔名與位置不一致（原檔名為 gitlab-runner-windows-amd64.exe）
+處理：建立 C:\GitLab-Runner，重新命名並整理檔案
+
+問題： Runner 註冊參數不確定
+
+處理：
+
+Tags：windows, shell
+Executor：shell
+Maintenance note：略過
+
+
+
+結果： Runner 成功安裝為 Windows 服務並啟動
+
+3. CI 編譯與相依問題處理階段
+問題： 找不到 PowerShell Core（pwsh）
+
+原因：Runner 預設用 pwsh，但伺服器只有 Windows PowerShell
+處理：安裝 PowerShell 7&#43;，重啟 Runner 服務
+
+問題： gitlab-runner 指令找不到">
+    <meta name="generator" content="Hugo 0.154.5">
+    
+    
+    
+      <meta name="robots" content="noindex, nofollow">
+    
+    
+
+    
+<link rel="stylesheet" href="/ananke/css/main.min.css" >
+
+
+
+
+    
+
+
+    
+      
+
+    
+
+    
+
+    
+      <link rel="canonical" href="http://localhost:1313/posts/cicd-%E6%95%B4%E7%90%86/">
+    
+
+    
+    
+    <meta property="og:url" content="http://localhost:1313/posts/cicd-%E6%95%B4%E7%90%86/">
+  <meta property="og:site_name" content="My New Hugo Site">
+  <meta property="og:title" content="CI/CD 經歷整理（GitLab &#43; Windows &#43; IIS）">
+  <meta property="og:description" content="1. 目標與環境設定階段 目標：在公司自架 GitLab 上為 .NET 專案建立 CI/CD，部署到 IIS。
+環境與策略
+Windows Server &#43; IIS GitLab Runner 使用 Shell Executor（非 Docker） 先做 Pilot Run，確認穩定再推廣 關鍵認知補強
+GitLab Server 只負責管理流程，實際執行需要 GitLab Runner 公司自架 GitLab &#43; 自架 Runner 本身免費（僅機器成本） 2. Runner 安裝與註冊階段 問題： 無法執行 gitlab-runner.exe
+原因：檔名與位置不一致（原檔名為 gitlab-runner-windows-amd64.exe） 處理：建立 C:\GitLab-Runner，重新命名並整理檔案 問題： Runner 註冊參數不確定
+處理： Tags：windows, shell Executor：shell Maintenance note：略過 結果： Runner 成功安裝為 Windows 服務並啟動
+3. CI 編譯與相依問題處理階段 問題： 找不到 PowerShell Core（pwsh）
+原因：Runner 預設用 pwsh，但伺服器只有 Windows PowerShell 處理：安裝 PowerShell 7&#43;，重啟 Runner 服務 問題： gitlab-runner 指令找不到">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2026-01-27T10:06:59+08:00">
+    <meta property="article:modified_time" content="2026-01-27T10:06:59+08:00">
+
+  <meta itemprop="name" content="CI/CD 經歷整理（GitLab &#43; Windows &#43; IIS）">
+  <meta itemprop="description" content="1. 目標與環境設定階段 目標：在公司自架 GitLab 上為 .NET 專案建立 CI/CD，部署到 IIS。
+環境與策略
+Windows Server &#43; IIS GitLab Runner 使用 Shell Executor（非 Docker） 先做 Pilot Run，確認穩定再推廣 關鍵認知補強
+GitLab Server 只負責管理流程，實際執行需要 GitLab Runner 公司自架 GitLab &#43; 自架 Runner 本身免費（僅機器成本） 2. Runner 安裝與註冊階段 問題： 無法執行 gitlab-runner.exe
+原因：檔名與位置不一致（原檔名為 gitlab-runner-windows-amd64.exe） 處理：建立 C:\GitLab-Runner，重新命名並整理檔案 問題： Runner 註冊參數不確定
+處理： Tags：windows, shell Executor：shell Maintenance note：略過 結果： Runner 成功安裝為 Windows 服務並啟動
+3. CI 編譯與相依問題處理階段 問題： 找不到 PowerShell Core（pwsh）
+原因：Runner 預設用 pwsh，但伺服器只有 Windows PowerShell 處理：安裝 PowerShell 7&#43;，重啟 Runner 服務 問題： gitlab-runner 指令找不到">
+  <meta itemprop="datePublished" content="2026-01-27T10:06:59+08:00">
+  <meta itemprop="dateModified" content="2026-01-27T10:06:59+08:00">
+  <meta itemprop="wordCount" content="227">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="CI/CD 經歷整理（GitLab &#43; Windows &#43; IIS）">
+  <meta name="twitter:description" content="1. 目標與環境設定階段 目標：在公司自架 GitLab 上為 .NET 專案建立 CI/CD，部署到 IIS。
+環境與策略
+Windows Server &#43; IIS GitLab Runner 使用 Shell Executor（非 Docker） 先做 Pilot Run，確認穩定再推廣 關鍵認知補強
+GitLab Server 只負責管理流程，實際執行需要 GitLab Runner 公司自架 GitLab &#43; 自架 Runner 本身免費（僅機器成本） 2. Runner 安裝與註冊階段 問題： 無法執行 gitlab-runner.exe
+原因：檔名與位置不一致（原檔名為 gitlab-runner-windows-amd64.exe） 處理：建立 C:\GitLab-Runner，重新命名並整理檔案 問題： Runner 註冊參數不確定
+處理： Tags：windows, shell Executor：shell Maintenance note：略過 結果： Runner 成功安裝為 Windows 服務並啟動
+3. CI 編譯與相依問題處理階段 問題： 找不到 PowerShell Core（pwsh）
+原因：Runner 預設用 pwsh，但伺服器只有 Windows PowerShell 處理：安裝 PowerShell 7&#43;，重啟 Runner 服務 問題： gitlab-runner 指令找不到">
+
+	
+  </head><body class="ma0 avenir bg-near-white development is-page is-page page-cicd-整理">
+    
+   
+  
+
+  <header>
+    <div class="bg-black">
+      <nav class="pv3 ph3 ph4-ns" role="navigation">
+  <div class="flex-l center items-center justify-between">
+    <a href="/" class="f3 fw2 hover-white white-90 dib no-underline">
+      
+        My New Hugo Site
+      
+    </a>
+    <div class="flex-l items-center">
+      
+
+      
+      <div class="ananke-socials"></div>
+
+    </div>
+  </div>
+</nav>
+
+    </div>
+  </header>
+
+
+
+    <main class="pb7" role="main">
+      
+  
+
+  <article class="page-cicd-整理 flex-l mw7 center ph3 flex-wrap justify-between">
+    <header class="mt4 w-100">
+      <aside class="instapaper_ignoref b helvetica tracked ttu">
+          
+        Posts
+      </aside><div id="sharing" class="mt3 ananke-socials"></div>
+<h1 class="f1 athelas mt3 mb1">CI/CD 經歷整理（GitLab &#43; Windows &#43; IIS）</h1>
+      
+      
+      
+      <time class="f6 mv4 dib tracked" datetime="2026-01-27T10:06:59+08:00">January 27, 2026</time>
+      
+
+      
+      
+    </header>
+    <div class="nested-copy-line-height lh-copy serif f4 nested-links mid-gray pr4-l w-100-l"><h2 id="1-目標與環境設定階段">1. 目標與環境設定階段</h2>
+<p><strong>目標</strong>：在公司自架 GitLab 上為 .NET 專案建立 CI/CD，部署到 IIS。</p>
+<p><strong>環境與策略</strong></p>
+<ul>
+<li>Windows Server + IIS</li>
+<li>GitLab Runner 使用 Shell Executor（非 Docker）</li>
+<li>先做 Pilot Run，確認穩定再推廣</li>
+</ul>
+<p><strong>關鍵認知補強</strong></p>
+<ul>
+<li>GitLab Server 只負責管理流程，實際執行需要 GitLab Runner</li>
+<li>公司自架 GitLab + 自架 Runner 本身免費（僅機器成本）</li>
+</ul>
+<hr>
+<h2 id="2-runner-安裝與註冊階段">2. Runner 安裝與註冊階段</h2>
+<p><strong>問題：</strong> 無法執行 <code>gitlab-runner.exe</code></p>
+<ul>
+<li><strong>原因</strong>：檔名與位置不一致（原檔名為 <code>gitlab-runner-windows-amd64.exe</code>）</li>
+<li><strong>處理</strong>：建立 <code>C:\GitLab-Runner</code>，重新命名並整理檔案</li>
+</ul>
+<p><strong>問題：</strong> Runner 註冊參數不確定</p>
+<ul>
+<li><strong>處理</strong>：
+<ul>
+<li>Tags：<code>windows, shell</code></li>
+<li>Executor：<code>shell</code></li>
+<li>Maintenance note：略過</li>
+</ul>
+</li>
+</ul>
+<p><strong>結果：</strong> Runner 成功安裝為 Windows 服務並啟動</p>
+<hr>
+<h2 id="3-ci-編譯與相依問題處理階段">3. CI 編譯與相依問題處理階段</h2>
+<p><strong>問題：</strong> 找不到 PowerShell Core（<code>pwsh</code>）</p>
+<ul>
+<li><strong>原因</strong>：Runner 預設用 <code>pwsh</code>，但伺服器只有 Windows PowerShell</li>
+<li><strong>處理</strong>：安裝 PowerShell 7+，重啟 Runner 服務</li>
+</ul>
+<p><strong>問題：</strong> <code>gitlab-runner</code> 指令找不到</p>
+<ul>
+<li><strong>原因</strong>：未加入 PATH</li>
+<li><strong>處理</strong>：改以 Windows 服務方式管理或用完整路徑執行</li>
+</ul>
+<p><strong>問題：</strong> .gitlab-ci.yml 語法錯誤</p>
+<ul>
+<li><strong>原因</strong>：縮排與註解造成 YAML 格式問題</li>
+<li><strong>處理</strong>：移除中文註解、統一 2 空格縮排、重建檔案</li>
+</ul>
+<p><strong>問題：</strong> .NET SDK 版本不符（專案為 .NET 8）</p>
+<ul>
+<li><strong>原因</strong>：伺服器僅安裝 .NET 6 SDK</li>
+<li><strong>處理</strong>：安裝 .NET 8 SDK（不需重開機）</li>
+</ul>
+<p><strong>問題：</strong> 專案參考找不到（<code>Shared.Utils.csproj</code>）</p>
+<ul>
+<li><strong>原因</strong>：相依專案未拉取或路徑錯誤</li>
+<li><strong>處理</strong>：在 CI build 前自動 clone <code>SharedRepo</code> 專案並切到指定分支</li>
+</ul>
+<p><strong>問題：</strong> clone 失敗（<code>HTTP Basic Access denied</code>）</p>
+<ul>
+<li><strong>原因</strong>：CI_JOB_TOKEN 無權限</li>
+<li><strong>處理</strong>：在 <code>SharedRepo</code> 啟用 Token Access，並設定來源專案；必要時重設遠端 URL</li>
+</ul>
+<p><strong>問題：</strong> <code>SharedFeature</code> 命名空間不存在</p>
+<ul>
+<li><strong>原因</strong>：相依功能在 <code>master</code> 分支</li>
+<li><strong>處理</strong>：SharedRepo 固定使用 <code>master</code></li>
+</ul>
+<p><strong>問題：</strong> publish 找不到 <code>Shared.Utils.dll</code></p>
+<ul>
+<li><strong>原因</strong>：<code>dotnet publish</code> 使用 <code>--no-build</code>，未產出 Release</li>
+<li><strong>處理</strong>：移除 <code>--no-build</code></li>
+</ul>
+<hr>
+<h2 id="4-cd-部署與-iis-相關問題處理階段">4. CD 部署與 IIS 相關問題處理階段</h2>
+<p><strong>問題：</strong> <code>Stop-WebAppPool</code> 找不到</p>
+<ul>
+<li><strong>原因</strong>：未載入 WebAdministration 模組或未安裝 IIS 管理工具</li>
+<li><strong>處理</strong>：在 deploy 加入 <code>Import-Module WebAdministration</code></li>
+</ul>
+<p><strong>問題：</strong> 部署清理誤刪 Logs / Uploads</p>
+<ul>
+<li><strong>處理</strong>：清理時排除 <code>Logs</code> 與 <code>Uploads</code></li>
+</ul>
+<p><strong>問題：</strong> HTTP 500.19（IIS 無法識別 <code>&lt;aspNetCore&gt;</code>）</p>
+<ul>
+<li><strong>原因</strong>：缺少 ASP.NET Core Module（Hosting Bundle）</li>
+<li><strong>處理</strong>：安裝 .NET Hosting Bundle，並執行 <code>iisreset</code></li>
+</ul>
+<hr>
+<h2 id="5-目前-gitlab-ciyml-的關鍵策略">5. 目前 <code>.gitlab-ci.yml</code> 的關鍵策略</h2>
+<ul>
+<li>build 前先拉 <code>SharedRepo</code>，並確保 token 與分支正確</li>
+<li>publish 會產生 Release 輸出</li>
+<li>deploy 載入 IIS 模組，並排除 Logs/Uploads</li>
+</ul>
+<hr>
+<h2 id="6-總結流程縮寫">6. 總結（流程縮寫）</h2>
+<ol>
+<li><strong>理解架構</strong>：Runner 必不可少</li>
+<li><strong>安裝註冊</strong>：Runner/Executor/Tags 正確配置</li>
+<li><strong>CI 編譯</strong>：處理 SDK、相依專案、YAML、Token 權限</li>
+<li><strong>CD 部署</strong>：IIS 模組、Hosting Bundle、清理策略</li>
+<li><strong>穩定化</strong>：分支鎖定、產出 Release、排除重要資料夾</li>
+</ol>
+<ul class="pa0">
+  
+</ul>
+
+      
+    </div></article>
+
+    </main>
+    <footer class="bg-black bottom-0 w-100 pa3" role="contentinfo">
+  <div class="flex justify-between">
+  <a class="f4 fw4 hover-white white-70 dn dib-ns pv2 ph3 no-underline" href="http://localhost:1313/" >
+    &copy;  My New Hugo Site 2026 
+  </a>
+    <div><div class="ananke-socials"></div>
+</div>
+  </div>
+</footer>
+
+  </body>
+</html>

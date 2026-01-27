@@ -9,6 +9,13 @@
     <lastBuildDate>Tue, 27 Jan 2026 10:06:59 +0800</lastBuildDate>
     <atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
     <item>
+      <title>CI/CD 經歷整理（GitLab &#43; Windows &#43; IIS）</title>
+      <link>http://localhost:1313/posts/cicd-%E6%95%B4%E7%90%86/</link>
+      <pubDate>Tue, 27 Jan 2026 10:06:59 +0800</pubDate>
+      <guid>http://localhost:1313/posts/cicd-%E6%95%B4%E7%90%86/</guid>
+      <description>&lt;h2 id=&#34;1-目標與環境設定階段&#34;&gt;1. 目標與環境設定階段&lt;/h2&gt;&#xA;&lt;p&gt;&lt;strong&gt;目標&lt;/strong&gt;：在公司自架 GitLab 上為 .NET 專案建立 CI/CD，部署到 IIS。&lt;/p&gt;&#xA;&lt;p&gt;&lt;strong&gt;環境與策略&lt;/strong&gt;&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Windows Server + IIS&lt;/li&gt;&#xA;&lt;li&gt;GitLab Runner 使用 Shell Executor（非 Docker）&lt;/li&gt;&#xA;&lt;li&gt;先做 Pilot Run，確認穩定再推廣&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;&lt;strong&gt;關鍵認知補強&lt;/strong&gt;&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;GitLab Server 只負責管理流程，實際執行需要 GitLab Runner&lt;/li&gt;&#xA;&lt;li&gt;公司自架 GitLab + 自架 Runner 本身免費（僅機器成本）&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;2-runner-安裝與註冊階段&#34;&gt;2. Runner 安裝與註冊階段&lt;/h2&gt;&#xA;&lt;p&gt;&lt;strong&gt;問題：&lt;/strong&gt; 無法執行 &lt;code&gt;gitlab-runner.exe&lt;/code&gt;&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;strong&gt;原因&lt;/strong&gt;：檔名與位置不一致（原檔名為 &lt;code&gt;gitlab-runner-windows-amd64.exe&lt;/code&gt;）&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;處理&lt;/strong&gt;：建立 &lt;code&gt;C:\GitLab-Runner&lt;/code&gt;，重新命名並整理檔案&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;&lt;strong&gt;問題：&lt;/strong&gt; Runner 註冊參數不確定&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;strong&gt;處理&lt;/strong&gt;：&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Tags：&lt;code&gt;windows, shell&lt;/code&gt;&lt;/li&gt;&#xA;&lt;li&gt;Executor：&lt;code&gt;shell&lt;/code&gt;&lt;/li&gt;&#xA;&lt;li&gt;Maintenance note：略過&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;&lt;strong&gt;結果：&lt;/strong&gt; Runner 成功安裝為 Windows 服務並啟動&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;3-ci-編譯與相依問題處理階段&#34;&gt;3. CI 編譯與相依問題處理階段&lt;/h2&gt;&#xA;&lt;p&gt;&lt;strong&gt;問題：&lt;/strong&gt; 找不到 PowerShell Core（&lt;code&gt;pwsh&lt;/code&gt;）&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;strong&gt;原因&lt;/strong&gt;：Runner 預設用 &lt;code&gt;pwsh&lt;/code&gt;，但伺服器只有 Windows PowerShell&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;處理&lt;/strong&gt;：安裝 PowerShell 7+，重啟 Runner 服務&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;&lt;strong&gt;問題：&lt;/strong&gt; &lt;code&gt;gitlab-runner&lt;/code&gt; 指令找不到&lt;/p&gt;</description>
+    </item>
+    <item>
       <title>Hello World</title>
       <link>http://localhost:1313/posts/hello-world/</link>
       <pubDate>Tue, 27 Jan 2026 10:06:59 +0800</pubDate>

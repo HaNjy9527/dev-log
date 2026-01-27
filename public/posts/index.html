@@ -49,8 +49,8 @@
   <meta property="og:type" content="website">
 
   <meta itemprop="name" content="Posts">
-  <meta itemprop="datePublished" content="2026-01-27T10:06:59+08:00">
-  <meta itemprop="dateModified" content="2026-01-27T10:06:59+08:00">
+  <meta itemprop="datePublished" content="2026-01-27T10:10:00+08:00">
+  <meta itemprop="dateModified" content="2026-01-27T10:10:00+08:00">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="Posts">
 
@@ -92,6 +92,58 @@
   <article class="pa3 pa4-ns nested-copy-line-height">
     <section class="cf ph3 ph5-l pv3 pv4-l f4 tc-l center measure-wide lh-copy nested-links mid-gray"></section>
     <section class="flex-ns mt5 flex-wrap justify-around">
+      
+        <div class="w-100 w-30-l mb4 relative bg-white">
+          <div class="w-100 mb4 nested-copy-line-height relative bg-white">
+  <div class="mb3 pa4 gray overflow-hidden bg-white">
+    <span class="f6 db">Posts</span>
+    <h1 class="f3 near-black">
+      <a href="/posts/gitlab_cicd_%E7%94%9F%E7%94%A2%E7%92%B0%E5%A2%83%E9%83%A8%E7%BD%B2%E5%95%8F%E9%A1%8C%E5%BD%99%E6%95%B4/" class="link black dim">
+        GitLab CI/CD 生產環境部署問題彙整
+      </a>
+    </h1>
+    <div class="nested-links f5 lh-copy nested-copy-line-height">
+      <p>這篇文章整理了 GitLab CI/CD 在生產環境部署時常見的問題與對策，包含 Runner、權限、IIS 與 .NET Hosting Bundle 等實務細節。</p>
+<h1 id="gitlab-cicd-生產環境部署問題彙整報告">GitLab CI/CD 生產環境部署問題彙整報告</h1>
+<h2 id="一環境基礎建設問題找不到-git">一、環境基礎建設問題：找不到 Git</h2>
+<h3 id="狀況描述">狀況描述</h3>
+<p>在生產伺服器執行 <code>get_sources</code> 階段時報錯 <code>The term 'git' is not recognized</code>。</p>
+<h3 id="原因分析">原因分析</h3>
+<ol>
+<li>生產伺服器尚未安裝 Git 客戶端</li>
+<li>安裝後未將 Git 路徑加入系統環境變數（Path），或 Runner 未重啟導致讀取不到新變數</li>
+</ol>
+<h3 id="解決方式">解決方式</h3>
+<ul>
+<li>在伺服器安裝 Git</li>
+<li>將 <code>C:\Program Files\Git\bin</code> 加入系統 Path</li>
+<li><strong>關鍵動作</strong>：執行 <code>Restart-Service gitlab-runner</code> 重新載入環境變數</li>
+</ul>
+<hr>
+<h2 id="二檔案部署邏輯問題copy-item-失敗">二、檔案部署邏輯問題：Copy-Item 失敗</h2>
+<h3 id="狀況描述-1">狀況描述</h3>
+<p>出現錯誤 <code>Container cannot be copied onto existing leaf item</code>。</p>
+<h3 id="原因分析-1">原因分析</h3>
+<ol>
+<li><code>Copy-Item</code> 在 PowerShell 處理「資料夾對資料夾」的覆蓋時邏輯較脆弱，若目標路徑已存在同名檔案或結構不符會報錯</li>
+<li>檔案被 IIS 程序佔用導致無法覆蓋</li>
+</ol>
+<h3 id="解決方式-1">解決方式</h3>
+<ul>
+<li>改用 <code>robocopy</code>：Windows 內建更強大的同步工具</li>
+<li>參數優化：使用 <code>/E</code> (子目錄)、<code>/MT:32</code> (多執行緒)、<code>/R:2 /W:5</code> (失敗重試機制)</li>
+<li>能有效解決暫時性的檔案鎖定問題</li>
+</ul>
+<hr>
+<h2 id="三iis-自動化控制問題應用程式集區狀態報錯">三、IIS 自動化控制問題：應用程式集區狀態報錯</h2>
+<h3 id="狀況描述-2">狀況描述</h3>
+<p>執行 <code>Stop-WebAppPool</code> 時出現 <code>目標路徑上的物件已經停止</code>，導致 Pipeline 中斷（ERROR: Job failed）。</p>
+    </div>
+    <a href="/posts/gitlab_cicd_%E7%94%9F%E7%94%A2%E7%92%B0%E5%A2%83%E9%83%A8%E7%BD%B2%E5%95%8F%E9%A1%8C%E5%BD%99%E6%95%B4/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
+  </div>
+</div>
+
+        </div>
       
         <div class="w-100 w-30-l mb4 relative bg-white">
           <div class="w-100 mb4 nested-copy-line-height relative bg-white">
@@ -142,6 +194,11 @@
 <li><strong>處理</strong>：安裝 PowerShell 7+，重啟 Runner 服務</li>
 </ul>
 <p><strong>問題：</strong> <code>gitlab-runner</code> 指令找不到</p>
+<ul>
+<li><strong>原因</strong>：未加入 PATH</li>
+<li><strong>處理</strong>：改以 Windows 服務方式管理或用完整路徑執行</li>
+</ul>
+<p><strong>問題：</strong> .gitlab-ci.yml 語法錯誤</p>
     </div>
     <a href="/posts/cicd-%E6%95%B4%E7%90%86/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
   </div>
@@ -192,24 +249,6 @@
 GitHub Actions 執行失敗，錯誤訊息：</p>
     </div>
     <a href="/posts/hello-world/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
-  </div>
-</div>
-
-        </div>
-      
-        <div class="w-100 w-30-l mb4 relative bg-white">
-          <div class="w-100 mb4 nested-copy-line-height relative bg-white">
-  <div class="mb3 pa4 gray overflow-hidden bg-white">
-    <span class="f6 db">Posts</span>
-    <h1 class="f3 near-black">
-      <a href="/posts/gitlab_cicd_%E7%94%9F%E7%94%A2%E7%92%B0%E5%A2%83%E9%83%A8%E7%BD%B2%E5%95%8F%E9%A1%8C%E5%BD%99%E6%95%B4/" class="link black dim">
-        
-      </a>
-    </h1>
-    <div class="nested-links f5 lh-copy nested-copy-line-height">
-      
-    </div>
-    <a href="/posts/gitlab_cicd_%E7%94%9F%E7%94%A2%E7%92%B0%E5%A2%83%E9%83%A8%E7%BD%B2%E5%95%8F%E9%A1%8C%E5%BD%99%E6%95%B4/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
   </div>
 </div>
 

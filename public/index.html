@@ -49,8 +49,8 @@
   <meta property="og:type" content="website">
 
   <meta itemprop="name" content="My New Hugo Site">
-  <meta itemprop="datePublished" content="2026-01-27T10:06:59+08:00">
-  <meta itemprop="dateModified" content="2026-01-27T10:06:59+08:00">
+  <meta itemprop="datePublished" content="2026-01-27T10:10:00+08:00">
+  <meta itemprop="dateModified" content="2026-01-27T10:10:00+08:00">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="My New Hugo Site">
 
@@ -113,6 +113,38 @@
       
       <div class="blah w-100">
         <h1 class="f3 fw1 athelas mt0 lh-title">
+          <a href="/posts/gitlab_cicd_%E7%94%9F%E7%94%A2%E7%92%B0%E5%A2%83%E9%83%A8%E7%BD%B2%E5%95%8F%E9%A1%8C%E5%BD%99%E6%95%B4/" class="color-inherit dim link">
+            GitLab CI/CD 生產環境部署問題彙整
+            </a>
+        </h1>
+        <div class="f6 f5-l lh-copy nested-copy-line-height nested-links">
+          <p>這篇文章整理了 GitLab CI/CD 在生產環境部署時常見的問題與對策，包含 Runner、權限、IIS 與 .NET Hosting Bundle 等實務細節。</p>
+<h1 id="gitlab-cicd-生產環境部署問題彙整報告">GitLab CI/CD 生產環境部署問題彙整報告</h1>
+<h2 id="一環境基礎建設問題找不到-git">一、環境基礎建設問題：找不到 Git</h2>
+<h3 id="狀況描述">狀況描述</h3>
+<p>在生產伺服器執行 <code>get_sources</code> 階段時報錯 <code>The term 'git' is not recognized</code>。</p>
+<h3 id="原因分析">原因分析</h3>
+<ol>
+<li>生產伺服器尚未安裝 Git 客戶端</li>
+<li>安裝後未將 Git 路徑加入系統環境變數（Path），或 Runner 未重啟導致讀取不到新變數</li>
+</ol>
+        </div>
+        <a href="/posts/gitlab_cicd_%E7%94%9F%E7%94%A2%E7%92%B0%E5%A2%83%E9%83%A8%E7%BD%B2%E5%95%8F%E9%A1%8C%E5%BD%99%E6%95%B4/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
+      </div>
+    </div>
+  </div>
+</article>
+
+          </div>
+        
+          <div class="w-100 mb4 relative">
+            
+<article class="bb b--black-10">
+  <div class="db pv4 ph3 ph0-l dark-gray no-underline">
+    <div class="flex-column flex-row-ns flex">
+      
+      <div class="blah w-100">
+        <h1 class="f3 fw1 athelas mt0 lh-title">
           <a href="/posts/cicd-%E6%95%B4%E7%90%86/" class="color-inherit dim link">
             CI/CD 經歷整理（GitLab &#43; Windows &#43; IIS）
             </a>
@@ -132,31 +164,6 @@
 <li>公司自架 GitLab + 自架 Runner 本身免費（僅機器成本）</li>
 </ul>
 <hr>
-<h2 id="2-runner-安裝與註冊階段">2. Runner 安裝與註冊階段</h2>
-<p><strong>問題：</strong> 無法執行 <code>gitlab-runner.exe</code></p>
-<ul>
-<li><strong>原因</strong>：檔名與位置不一致（原檔名為 <code>gitlab-runner-windows-amd64.exe</code>）</li>
-<li><strong>處理</strong>：建立 <code>C:\GitLab-Runner</code>，重新命名並整理檔案</li>
-</ul>
-<p><strong>問題：</strong> Runner 註冊參數不確定</p>
-<ul>
-<li><strong>處理</strong>：
-<ul>
-<li>Tags：<code>windows, shell</code></li>
-<li>Executor：<code>shell</code></li>
-<li>Maintenance note：略過</li>
-</ul>
-</li>
-</ul>
-<p><strong>結果：</strong> Runner 成功安裝為 Windows 服務並啟動</p>
-<hr>
-<h2 id="3-ci-編譯與相依問題處理階段">3. CI 編譯與相依問題處理階段</h2>
-<p><strong>問題：</strong> 找不到 PowerShell Core（<code>pwsh</code>）</p>
-<ul>
-<li><strong>原因</strong>：Runner 預設用 <code>pwsh</code>，但伺服器只有 Windows PowerShell</li>
-<li><strong>處理</strong>：安裝 PowerShell 7+，重啟 Runner 服務</li>
-</ul>
-<p><strong>問題：</strong> <code>gitlab-runner</code> 指令找不到</p>
         </div>
         <a href="/posts/cicd-%E6%95%B4%E7%90%86/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
       </div>
@@ -190,51 +197,8 @@
 <li><strong>主題</strong>：Ananke。</li>
 <li><strong>自動化</strong>：GitHub Actions。</li>
 </ul>
-<hr>
-<h2 id="2-遭遇問題與解決方案-troubleshooting-log">2. 遭遇問題與解決方案 (Troubleshooting Log)</h2>
-<h3 id="-git-上傳錯誤">🔴 Git 上傳錯誤</h3>
-<p><strong>問題描述：</strong>
-執行 <code>git push -u origin main</code> 時出現以下錯誤：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>error: src refspec main does not match any
-</span></span><span style="display:flex;"><span>error: failed to push some refs to &#39;https://github.com/HaNjy9527/dev-log.git&#39;
-</span></span></code></pre></div><p><strong>原因分析：</strong></p>
-<ol>
-<li>本地端尚未進行第一次 <code>commit</code>，導致分支 (Branch) 尚未建立。</li>
-<li>本地預設分支名稱為 <code>master</code>，但 GitHub 預期為 <code>main</code>。</li>
-</ol>
-<p><strong>解決指令：</strong></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>git add .
-</span></span><span style="display:flex;"><span>git commit -m <span style="color:#e6db74">&#34;Initial commit&#34;</span>  <span style="color:#75715e"># 建立實體版本</span>
-</span></span><span style="display:flex;"><span>git branch -M main              <span style="color:#75715e"># 強制更名為 main</span>
-</span></span><span style="display:flex;"><span>git push -u origin main         <span style="color:#75715e"># 推送</span>
-</span></span></code></pre></div><h3 id="-github-actions-版本不相容">🔴 GitHub Actions 版本不相容</h3>
-<p><strong>問題描述：</strong>
-GitHub Actions 執行失敗，錯誤訊息：</p>
         </div>
         <a href="/posts/hello-world/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
-      </div>
-    </div>
-  </div>
-</article>
-
-          </div>
-        
-          <div class="w-100 mb4 relative">
-            
-<article class="bb b--black-10">
-  <div class="db pv4 ph3 ph0-l dark-gray no-underline">
-    <div class="flex-column flex-row-ns flex">
-      
-      <div class="blah w-100">
-        <h1 class="f3 fw1 athelas mt0 lh-title">
-          <a href="/posts/gitlab_cicd_%E7%94%9F%E7%94%A2%E7%92%B0%E5%A2%83%E9%83%A8%E7%BD%B2%E5%95%8F%E9%A1%8C%E5%BD%99%E6%95%B4/" class="color-inherit dim link">
-            
-            </a>
-        </h1>
-        <div class="f6 f5-l lh-copy nested-copy-line-height nested-links">
-          
-        </div>
-        <a href="/posts/gitlab_cicd_%E7%94%9F%E7%94%A2%E7%92%B0%E5%A2%83%E9%83%A8%E7%BD%B2%E5%95%8F%E9%A1%8C%E5%BD%99%E6%95%B4/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
       </div>
     </div>
   </div>

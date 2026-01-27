@@ -17,7 +17,7 @@ title = 'CI/CD 經歷整理（GitLab + Windows + IIS）'
 - 公司自架 GitLab + 自架 Runner 本身免費（僅機器成本）
 
 ---
-
+<!--more-->
 ## 2. Runner 安裝與註冊階段
 **問題：** 無法執行 `gitlab-runner.exe`
 - **原因**：檔名與位置不一致（原檔名為 `gitlab-runner-windows-amd64.exe`）

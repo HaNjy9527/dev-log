@@ -19,32 +19,7 @@ GitLab Runner 使用 Shell Executor（非 Docker）
 GitLab Server 只負責管理流程，實際執行需要 GitLab Runner
 公司自架 GitLab &#43; 自架 Runner 本身免費（僅機器成本）
 
-
-2. Runner 安裝與註冊階段
-問題： 無法執行 gitlab-runner.exe
-
-原因：檔名與位置不一致（原檔名為 gitlab-runner-windows-amd64.exe）
-處理：建立 C:\GitLab-Runner，重新命名並整理檔案
-
-問題： Runner 註冊參數不確定
-
-處理：
-
-Tags：windows, shell
-Executor：shell
-Maintenance note：略過
-
-
-
-結果： Runner 成功安裝為 Windows 服務並啟動
-
-3. CI 編譯與相依問題處理階段
-問題： 找不到 PowerShell Core（pwsh）
-
-原因：Runner 預設用 pwsh，但伺服器只有 Windows PowerShell
-處理：安裝 PowerShell 7&#43;，重啟 Runner 服務
-
-問題： gitlab-runner 指令找不到">
+">
     <meta name="generator" content="Hugo 0.154.5">
     
     
@@ -81,11 +56,7 @@ Maintenance note：略過
   <meta property="og:description" content="1. 目標與環境設定階段 目標：在公司自架 GitLab 上為 .NET 專案建立 CI/CD，部署到 IIS。
 環境與策略
 Windows Server &#43; IIS GitLab Runner 使用 Shell Executor（非 Docker） 先做 Pilot Run，確認穩定再推廣 關鍵認知補強
-GitLab Server 只負責管理流程，實際執行需要 GitLab Runner 公司自架 GitLab &#43; 自架 Runner 本身免費（僅機器成本） 2. Runner 安裝與註冊階段 問題： 無法執行 gitlab-runner.exe
-原因：檔名與位置不一致（原檔名為 gitlab-runner-windows-amd64.exe） 處理：建立 C:\GitLab-Runner，重新命名並整理檔案 問題： Runner 註冊參數不確定
-處理： Tags：windows, shell Executor：shell Maintenance note：略過 結果： Runner 成功安裝為 Windows 服務並啟動
-3. CI 編譯與相依問題處理階段 問題： 找不到 PowerShell Core（pwsh）
-原因：Runner 預設用 pwsh，但伺服器只有 Windows PowerShell 處理：安裝 PowerShell 7&#43;，重啟 Runner 服務 問題： gitlab-runner 指令找不到">
+GitLab Server 只負責管理流程，實際執行需要 GitLab Runner 公司自架 GitLab &#43; 自架 Runner 本身免費（僅機器成本）">
   <meta property="og:locale" content="en_us">
   <meta property="og:type" content="article">
     <meta property="article:section" content="posts">
@@ -96,11 +67,7 @@ GitLab Server 只負責管理流程，實際執行需要 GitLab Runner 公司自
   <meta itemprop="description" content="1. 目標與環境設定階段 目標：在公司自架 GitLab 上為 .NET 專案建立 CI/CD，部署到 IIS。
 環境與策略
 Windows Server &#43; IIS GitLab Runner 使用 Shell Executor（非 Docker） 先做 Pilot Run，確認穩定再推廣 關鍵認知補強
-GitLab Server 只負責管理流程，實際執行需要 GitLab Runner 公司自架 GitLab &#43; 自架 Runner 本身免費（僅機器成本） 2. Runner 安裝與註冊階段 問題： 無法執行 gitlab-runner.exe
-原因：檔名與位置不一致（原檔名為 gitlab-runner-windows-amd64.exe） 處理：建立 C:\GitLab-Runner，重新命名並整理檔案 問題： Runner 註冊參數不確定
-處理： Tags：windows, shell Executor：shell Maintenance note：略過 結果： Runner 成功安裝為 Windows 服務並啟動
-3. CI 編譯與相依問題處理階段 問題： 找不到 PowerShell Core（pwsh）
-原因：Runner 預設用 pwsh，但伺服器只有 Windows PowerShell 處理：安裝 PowerShell 7&#43;，重啟 Runner 服務 問題： gitlab-runner 指令找不到">
+GitLab Server 只負責管理流程，實際執行需要 GitLab Runner 公司自架 GitLab &#43; 自架 Runner 本身免費（僅機器成本）">
   <meta itemprop="datePublished" content="2026-01-27T10:06:59+08:00">
   <meta itemprop="dateModified" content="2026-01-27T10:06:59+08:00">
   <meta itemprop="wordCount" content="227">
@@ -109,11 +76,7 @@ GitLab Server 只負責管理流程，實際執行需要 GitLab Runner 公司自
   <meta name="twitter:description" content="1. 目標與環境設定階段 目標：在公司自架 GitLab 上為 .NET 專案建立 CI/CD，部署到 IIS。
 環境與策略
 Windows Server &#43; IIS GitLab Runner 使用 Shell Executor（非 Docker） 先做 Pilot Run，確認穩定再推廣 關鍵認知補強
-GitLab Server 只負責管理流程，實際執行需要 GitLab Runner 公司自架 GitLab &#43; 自架 Runner 本身免費（僅機器成本） 2. Runner 安裝與註冊階段 問題： 無法執行 gitlab-runner.exe
-原因：檔名與位置不一致（原檔名為 gitlab-runner-windows-amd64.exe） 處理：建立 C:\GitLab-Runner，重新命名並整理檔案 問題： Runner 註冊參數不確定
-處理： Tags：windows, shell Executor：shell Maintenance note：略過 結果： Runner 成功安裝為 Windows 服務並啟動
-3. CI 編譯與相依問題處理階段 問題： 找不到 PowerShell Core（pwsh）
-原因：Runner 預設用 pwsh，但伺服器只有 Windows PowerShell 處理：安裝 PowerShell 7&#43;，重啟 Runner 服務 問題： gitlab-runner 指令找不到">
+GitLab Server 只負責管理流程，實際執行需要 GitLab Runner 公司自架 GitLab &#43; 自架 Runner 本身免費（僅機器成本）">
 
 	
   </head><body class="ma0 avenir bg-near-white development is-page is-page page-cicd-整理">
@@ -269,8 +232,7 @@ GitLab Server 只負責管理流程，實際執行需要 GitLab Runner 公司自
 <li><strong>CI 編譯</strong>：處理 SDK、相依專案、YAML、Token 權限</li>
 <li><strong>CD 部署</strong>：IIS 模組、Hosting Bundle、清理策略</li>
 <li><strong>穩定化</strong>：分支鎖定、產出 Release、排除重要資料夾</li>
-</ol>
-<ul class="pa0">
+</ol><ul class="pa0">
   
 </ul>
 

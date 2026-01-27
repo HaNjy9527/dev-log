@@ -16,7 +16,7 @@ title = 'Hello World GitHub Pages + Hugo 建置開發日誌'
 * **架構**：GitHub Pages (Hosting) + Hugo (Static Site Generator)。
 * **主題**：Ananke。
 * **自動化**：GitHub Actions。
-
+<!--more-->
 ---
 
 ## 2. 遭遇問題與解決方案 (Troubleshooting Log)

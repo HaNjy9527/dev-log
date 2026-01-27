@@ -175,12 +175,41 @@
       <div class="blah w-100">
         <h1 class="f3 fw1 athelas mt0 lh-title">
           <a href="/posts/hello-world/" class="color-inherit dim link">
-            Hello World
+            Hello World GitHub Pages &#43; Hugo 建置開發日誌
             </a>
         </h1>
         <div class="f6 f5-l lh-copy nested-copy-line-height nested-links">
           <h2 id="這是我的第一篇網誌">這是我的第一篇網誌</h2>
-<p>測試一下 <strong>粗體</strong> 和 <code>程式碼</code>。</p>
+<p>這是一份完整的開發日誌摘要，你可以將其儲存為 <code>README.md</code> 或 <code>DEV_LOG.md</code> 放進你的專案中，方便未來查閱。</p>
+<hr>
+<h1 id="github-pages--hugo-建置開發日誌">GitHub Pages + Hugo 建置開發日誌</h1>
+<h2 id="1-專案概述">1. 專案概述</h2>
+<ul>
+<li><strong>目標</strong>：建立個人技術網誌 (<code>dev-log</code>)。</li>
+<li><strong>架構</strong>：GitHub Pages (Hosting) + Hugo (Static Site Generator)。</li>
+<li><strong>主題</strong>：Ananke。</li>
+<li><strong>自動化</strong>：GitHub Actions。</li>
+</ul>
+<hr>
+<h2 id="2-遭遇問題與解決方案-troubleshooting-log">2. 遭遇問題與解決方案 (Troubleshooting Log)</h2>
+<h3 id="-git-上傳錯誤">🔴 Git 上傳錯誤</h3>
+<p><strong>問題描述：</strong>
+執行 <code>git push -u origin main</code> 時出現以下錯誤：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>error: src refspec main does not match any
+</span></span><span style="display:flex;"><span>error: failed to push some refs to &#39;https://github.com/HaNjy9527/dev-log.git&#39;
+</span></span></code></pre></div><p><strong>原因分析：</strong></p>
+<ol>
+<li>本地端尚未進行第一次 <code>commit</code>，導致分支 (Branch) 尚未建立。</li>
+<li>本地預設分支名稱為 <code>master</code>，但 GitHub 預期為 <code>main</code>。</li>
+</ol>
+<p><strong>解決指令：</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>git add .
+</span></span><span style="display:flex;"><span>git commit -m <span style="color:#e6db74">&#34;Initial commit&#34;</span>  <span style="color:#75715e"># 建立實體版本</span>
+</span></span><span style="display:flex;"><span>git branch -M main              <span style="color:#75715e"># 強制更名為 main</span>
+</span></span><span style="display:flex;"><span>git push -u origin main         <span style="color:#75715e"># 推送</span>
+</span></span></code></pre></div><h3 id="-github-actions-版本不相容">🔴 GitHub Actions 版本不相容</h3>
+<p><strong>問題描述：</strong>
+GitHub Actions 執行失敗，錯誤訊息：</p>
         </div>
         <a href="/posts/hello-world/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
       </div>

@@ -62,3 +62,30 @@ header a:hover {
   color: var(--adventure-blue);
   box-shadow: inset 0 -2px 0 rgba(90, 208, 255, 0.5);
 }
+
+.nested-copy-line-height pre,
+.nested-copy-line-height pre code,
+.nested-copy-line-height code,
+.nested-copy-line-height .highlight pre,
+.nested-copy-line-height .highlight code {
+  font-family: "Cascadia Mono", "Cascadia Code", "JetBrains Mono", "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Monaco, monospace;
+  letter-spacing: 0;
+  font-kerning: none;
+  font-variant-ligatures: none;
+}
+
+.nested-copy-line-height pre,
+.nested-copy-line-height .highlight pre {
+  font-size: 0.95rem;
+  line-height: 1.7;
+  overflow-x: auto;
+  white-space: pre-wrap;
+  word-break: break-word;
+  overflow-wrap: anywhere;
+}
+
+.nested-copy-line-height pre code,
+.nested-copy-line-height .highlight pre code {
+  font-size: inherit;
+  line-height: inherit;
+}

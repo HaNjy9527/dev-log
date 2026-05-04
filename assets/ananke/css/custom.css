@@ -89,3 +89,47 @@ header a:hover {
   font-size: inherit;
   line-height: inherit;
 }
+
+.back-to-top {
+  --back-to-top-base-offset: 1.5rem;
+  --back-to-top-footer-offset: 0px;
+  position: fixed;
+  right: 1.25rem;
+  bottom: calc(var(--back-to-top-base-offset) + var(--back-to-top-footer-offset));
+  z-index: 9999;
+  width: 3rem;
+  height: 3rem;
+  border: 0;
+  border-radius: 999px;
+  background: linear-gradient(135deg, var(--adventure-pink), var(--adventure-blue));
+  color: #fff;
+  box-shadow: 0 10px 24px rgba(43, 43, 43, 0.22);
+  cursor: pointer;
+  font-size: 1.35rem;
+  line-height: 1;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(10px);
+  transition: opacity 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.back-to-top.is-visible {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
+.back-to-top:hover,
+.back-to-top:focus-visible {
+  box-shadow: 0 14px 28px rgba(43, 43, 43, 0.28);
+  outline: none;
+}
+
+@media (max-width: 30em) {
+  .back-to-top {
+    --back-to-top-base-offset: 1rem;
+    right: 1rem;
+    width: 2.75rem;
+    height: 2.75rem;
+  }
+}

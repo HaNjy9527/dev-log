@@ -1,0 +1,32 @@
+{{ if .IsPage }}
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const button = document.getElementById("back-to-top");
+    const footer = document.querySelector("footer");
+
+    if (!button) {
+      return;
+    }
+
+    const toggleButton = () => {
+      button.classList.toggle("is-visible", window.scrollY > 360);
+
+      if (!footer) {
+        button.style.removeProperty("--back-to-top-footer-offset");
+        return;
+      }
+
+      const footerRect = footer.getBoundingClientRect();
+      const footerOverlap = Math.max(0, window.innerHeight - footerRect.top);
+      button.style.setProperty("--back-to-top-footer-offset", `${footerOverlap}px`);
+    };
+
+    button.addEventListener("click", () => {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+
+    toggleButton();
+    window.addEventListener("scroll", toggleButton, { passive: true });
+  });
+</script>
+{{ end }}

@@ -9,6 +9,14 @@
 - 若任務包含程式碼或設定修改，完成後至少執行一次最小必要驗證。
 - 最終回覆需包含：驗證結果、1 條 Conventional Commit 建議（僅建議，不自動 commit，內容盡量用正體中文）。
 
+## Hugo / 前端變更驗證規則
+- 若修改 `my-blog` 專案中的前端相關內容，包含 `content/posts/`、`layouts/`、`assets/`、`static/`、`hugo.toml` 或其他會影響頁面呈現的檔案，結束前必須先做本地預覽驗證，不可只停在 diff 或 build 成功。
+- 本地 Hugo 指令必須從 `c:\Users\car88080303\source\repos\MiguelProjectHub\my-blog` 執行；若在 workspace root 執行導致找不到設定檔，需先修正工作目錄再繼續。
+- 前端驗證優先使用現有 skill：若需求符合，先讀取 `.github/skills/hugo-local-frontend-check/SKILL.md` 再實作。
+- 驗證時預設打開實際被修改的頁面；若為共用版型或導覽變更，至少檢查首頁與一篇文章頁。
+- 若變更涉及互動行為、浮動元件、版型、樣式或腳本，需在本地頁面實際驗證互動結果；必要時補桌機與手機寬度檢查。
+- 完成本地預覽驗證後，仍需再執行一次 `hugo` 作為最終靜態建置驗證；若無法執行，需明確說明原因與補驗證命令。
+
 ## 最小必要驗證
 - `.NET` 變更：執行 `dotnet build Car1.Finance.ReconPortal/Car1.Finance.ReconPortal.csproj`。
 - 若無法驗證，需明確註記原因，並給出可執行的補驗證命令。
